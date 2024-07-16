@@ -4,19 +4,19 @@ import ServiceCard from "./ui/ServiceCard";
 const services = [
   {
     title: "Criação de métricas KPI",
-    bgImage: "/S3.jpg",
+    bgImage: "/S3.avif",
   },
   {
     title: "Estruturação de BI",
-    bgImage: "/S4.jpg",
+    bgImage: "/S4.avif",
   },
   {
     title: "Automação de Rotinas Administrativas",
-    bgImage: "/S1.jpg",
+    bgImage: "/S1.avif",
   },
   {
     title: "Criação de relatórios e dashboards automatizados",
-    bgImage: "/S2.jpeg",
+    bgImage: "/S2.avif",
   },
 ];
 
