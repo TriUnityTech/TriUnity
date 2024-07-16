@@ -83,34 +83,34 @@ export const gridItems = [
 export const projects = [
   {
     id: 1,
-    title: "www.zinctech.com.br",
+    title: "Zinctech",
     des: "Trabalho realizado para site ecommerce de produtos eletrônicos",
     img: "/P1.jpg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg"],
-    link: "ZincTech",
+    iconLists: ["/re.svg", "/tail.svg", "shopify.svg", "photoshop.svg"],
+    link: "https://zinctech.com.br/",
   },
   {
     id: 2,
-    title: "www.example.com.br",
-    des: "Trabalho realizado para tal empresa com tal intuito",
-    img: "/em-breve.jpg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
-    link: "Em desenvolvimento",
+    title: "Página de Links - Cintia Resende",
+    des: "Página de Links feita para designer de sobrancelha Cintia Resende",
+    img: "/P2.jpg",
+    iconLists: ["/re.svg", "/tail.svg", "photoshop.svg"],
+    link: "https://cintia-resende-links.vercel.app/",
   },
   {
     id: 3,
-    title: "www.example.com.br",
+    title: "Em breve",
     des: "Trabalho realizado para tal empresa com tal intuito",
     img: "/em-breve.jpg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
+    iconLists: ["/re.svg", "/tail.svg", "photoshop.svg"],
     link: "Em desenvolvimento",
   },
   {
     id: 4,
-    title: "www.example.com.br",
+    title: "Em breve",
     des: "Trabalho realizado para tal empresa com tal intuito",
     img: "/em-breve.jpg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
+    iconLists: ["/re.svg", "/tail.svg", "photoshop.svg"],
     link: "Em desenvolvimento",
   },
 ];
@@ -152,7 +152,7 @@ export const workExperience = [
   {
     id: 1,
     title: "Inovação e Tecnologia de ponta",
-    desc: "Destacamos por adotar e implementar as tecnologias mais recentes e inovadoras do mercado.",
+    desc: "Destacamos por prezar e adotar e implementar as tecnologias mais recentes e inovadoras do mercado para melhor lhe atender.",
     className: "md:col-span-2",
     thumbnail: "/D-3.svg",
   },
@@ -160,14 +160,14 @@ export const workExperience = [
     id: 2,
     title: "Entrega rápida e eficiente",
     desc: "Garantimos que os clientes recebam suas soluções tecnológicas no menor tempo possível, mantendo altos padrões de qualidade.",
-    className: "md:col-span-2", // change to md:col-span-2
+    className: "md:col-span-2",
     thumbnail: "/D-2.svg",
   },
   {
     id: 3,
     title: "Excelência no atendimento",
     desc: "Nossa equipe está sempre disponível para oferecer suporte técnico especializado e resolver quaisquer problemas ou dúvidas que os clientes possam ter de forma eficaz.",
-    className: "md:col-span-2", // change to md:col-span-2
+    className: "md:col-span-2",
     thumbnail: "/D-1.svg",
   },
   {
@@ -183,13 +183,16 @@ export const socialMedia = [
   {
     id: 1,
     img: "/git.svg",
+    link: "https://github.com/TriUnityTech",
   },
   {
     id: 2,
-    img: "/twit.svg",
+    img: "/insta.svg",
+    link: "https://www.linkedin.com/company/triunity-tech-services/?viewAsMember=true",
   },
   {
     id: 3,
     img: "/link.svg",
+    link: "https://linkedin.com/in/yourprofile",
   },
 ];

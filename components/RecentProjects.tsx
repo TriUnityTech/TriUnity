@@ -1,25 +1,27 @@
 "use client";
 
 import { FaLocationArrow } from "react-icons/fa6";
-
 import { projects } from "@/data";
 import { PinContainer } from "./ui/Pin";
 
-const RecentProjects = () => {
+const Projects = () => {
   return (
-    <div className="py-20">
+    <div id="projects" className="py-20">
       <h1 className="heading">
         Alguns de <span className="text-purple">nossos trabalhos recentes</span>
       </h1>
-      <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
+      <div className="flex flex-wrap items-center justify-center p-4 gap-28 md:gap-y-60 my-14 sm:mt-32">
         {projects.map((item) => (
-          <div
-            className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
+          <a
             key={item.id}
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="card h-auto  flex items-center justify-center sm:w-96 w-[80vw]"
           >
-            <PinContainer title={item.title} href={item.link}>
-              <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden mb-10">
-                <div className="h-[20vh] lg:h-[30vh] w-full max-h-[30vh] lg:max-h-[h-auto]"></div>
+            <PinContainer title={item.link} href={item.link}>
+              <div className="relative h-auto flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden mb-10">
+                <div className="sm:max-h-52 h-48 w-full"></div>
                 <img
                   src={item.img}
                   alt="cover"
@@ -27,11 +29,11 @@ const RecentProjects = () => {
                 />
               </div>
 
-              <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
-                <a href={item.link} target="_blank" rel="noopener noreferrer">
-                  {item.link}
-                </a>
-              </h1>
+              <a href={item.link} target="_blank" rel="noopener noreferrer">
+                <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
+                  {item.title}
+                </h1>
+              </a>
 
               <p
                 className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2"
@@ -66,11 +68,11 @@ const RecentProjects = () => {
                 </div>
               </div>
             </PinContainer>
-          </div>
+          </a>
         ))}
       </div>
     </div>
   );
 };
 
-export default RecentProjects;
+export default Projects;
