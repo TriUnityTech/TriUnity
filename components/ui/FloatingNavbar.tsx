@@ -1,13 +1,10 @@
 "use client";
-import React, { useState } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useScroll,
-  useMotionValueEvent,
-} from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { useLenis } from "@studio-freight/react-lenis";
 import { cn } from "@/lib/utils";
+import { ScrollTrigger } from "@/lib/gsap";
 
 export const FloatingNav = ({
   navItems,
@@ -20,28 +17,27 @@ export const FloatingNav = ({
   }[];
   className?: string;
 }) => {
-  const { scrollYProgress } = useScroll();
-
   // set true for the initial state so that nav bar is visible in the hero section
   const [visible, setVisible] = useState(true);
+  const lenis = useLenis();
 
-  useMotionValueEvent(scrollYProgress, "change", (current) => {
-    // Check if current is not undefined and is a number
-    if (typeof current === "number") {
-      let direction = current! - scrollYProgress.getPrevious()!;
-
-      if (scrollYProgress.get() < 0.05) {
-        // also set true for the initial state
-        setVisible(true);
-      } else {
-        if (direction < 0) {
+  // ScrollTrigger é atualizado pelo Lenis (ver SmoothScroll), então a direção
+  // aqui fica sempre em sincronia com o scroll suavizado
+  useEffect(() => {
+    const st = ScrollTrigger.create({
+      start: 0,
+      end: "max",
+      onUpdate: (self) => {
+        if (self.progress < 0.05) {
           setVisible(true);
         } else {
-          setVisible(false);
+          setVisible(self.direction === -1);
         }
-      }
-    }
-  });
+      },
+    });
+
+    return () => st.kill();
+  }, []);
 
   return (
     <AnimatePresence mode="wait">
@@ -55,7 +51,8 @@ export const FloatingNav = ({
           opacity: visible ? 1 : 0,
         }}
         transition={{
-          duration: 0.2,
+          duration: 0.4,
+          ease: [0.25, 0.1, 0.25, 1.0],
         }}
         className={cn(
           // change rounded-full to rounded-lg
@@ -65,16 +62,24 @@ export const FloatingNav = ({
           className
         )}
         style={{
-          backdropFilter: "blur(16px) saturate(180%)",
-          backgroundColor: "rgba(17, 25, 40, 0.75)",
-          borderRadius: "12px",
-          border: "1px solid rgba(255, 255, 255, 0.125)",
+          backdropFilter: "blur(24px) saturate(150%)",
+          backgroundColor: "rgba(9, 9, 11, 0.65)",
+          borderRadius: "9999px",
+          border: "1px solid rgba(255, 255, 255, 0.08)",
         }}
       >
         {navItems.map((navItem: any, idx: number) => (
           <Link
             key={`link=${idx}`}
             href={navItem.link}
+            onClick={(e) => {
+              // Âncoras roladas pelo Lenis: chegada suave, no mesmo motor do
+              // resto da página (em vez do salto nativo)
+              if (lenis && navItem.link.startsWith("#")) {
+                e.preventDefault();
+                lenis.scrollTo(navItem.link, { offset: -110, duration: 1.6 });
+              }
+            }}
             className={cn(
               "relative dark:text-neutral-50 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500"
             )}

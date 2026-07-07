@@ -5,92 +5,106 @@ export const navItems = [
   { name: "Contatos", link: "#contact" },
 ];
 
-export const gridItems = [
+export type ServiceIcon =
+  | "server"
+  | "headset"
+  | "wifi"
+  | "network"
+  | "broadcast"
+  | "consulting"
+  | "laptop"
+  | "code";
+
+export const services: {
+  id: number;
+  title: string;
+  description: string;
+  icon: ServiceIcon;
+  img?: string;
+  className: string;
+}[] = [
   {
     id: 1,
-    title: "Desenvolvimento web personalizado ",
-    description: "",
-    className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
-    imgClassName: "w-full h-full",
-    titleClassName: "justify-start",
-    img: "/b1.webp",
-    spareImg: "",
-  },
-  {
-    id: 3,
-    title: "Backup em nuvem",
-    description: "Serviços de",
-    className: "lg:col-span-2 md:col-span-3 md:row-span-2",
-    imgClassName: "w-full h-full",
-    titleClassName: "justify-center",
-    img: "/bkp-bg.avif",
-    spareImg: "",
-  },
-  {
-    id: 3,
-    title: "Email Personalizado",
-    description: "Serviços de",
-    className: "lg:col-span-2 md:col-span-3 md:row-span-2",
-    imgClassName: "w-full h-full",
-    titleClassName: "justify-center",
-    img: "/mail-bg.avif",
-    spareImg: "",
-  },
-
-  {
-    id: 3,
-    title: "E-commerce",
-    description: "Desenvolvimento de soluções de",
-    className: "lg:col-span-2 md:col-span-3 md:row-span-2",
-    imgClassName: "w-full h-full",
-    titleClassName: "justify-center",
-    img: "eccomerce-bg.avif",
-    spareImg: "",
-  },
-  {
-    id: 4,
-    title: "infraestrutura de TI",
-    description: "Consultoria em ",
-    className: "lg:col-span-3 md:col-span-3 md:row-span-1",
-    imgClassName: "w-full h-full",
-    titleClassName: "justify-center",
+    title: "Infraestrutura",
+    description:
+      "Projetamos, implantamos e gerenciamos toda a base tecnológica da sua empresa: servidores, storage, virtualização e ambientes híbridos.",
+    icon: "server",
     img: "/infra-bg.avif",
-    spareImg: "",
-  },
-
-  {
-    id: 5,
-    title: "Computadores",
-    description: "Manutenção de ",
-    className: "md:col-span-3 md:row-span-2  ",
-    imgClassName: "w-full h-full",
-    titleClassName: "justify-center md:justify-start lg:justify-center",
-    img: "/manutencao-bg.avif",
-    spareImg: "",
-  },
-  {
-    id: 6,
-    title: "Envie um email falando de sua necessidade em TI:",
-    description: "",
-    className: "lg:col-span-2 md:col-span-3 md:row-span-1",
-    imgClassName: "",
-    titleClassName: "justify-center md:max-w-full max-w-60 text-center",
-    img: "",
-    spareImg: "",
-  },
-];
-
-export const projects = [
-  {
-    id: 1,
-    title: "Zinctech",
-    des: "Trabalho realizado para site ecommerce de produtos eletrônicos",
-    img: "/P1.avif",
-    iconLists: ["/re.svg", "/tail.svg", "shopify.svg", "photoshop.svg"],
-    link: "https://zinctech.com.br/",
+    className: "md:col-span-2 lg:col-span-2 lg:row-span-2",
   },
   {
     id: 2,
+    title: "Redes Wi-Fi empresarial",
+    description:
+      "Cobertura corporativa de alta densidade, com segurança, gestão centralizada e desempenho estável.",
+    icon: "wifi",
+    className: "lg:col-span-1",
+  },
+  {
+    id: 3,
+    title: "Redes físicas estruturadas",
+    description:
+      "Cabeamento estruturado com certificação, organização de racks e documentação completa.",
+    icon: "network",
+    className: "lg:col-span-1",
+  },
+  {
+    id: 4,
+    title: "Suporte On e Offsourcing",
+    description:
+      "Equipe técnica dedicada, presencial ou remota, com atendimento contínuo e SLAs sob medida.",
+    icon: "headset",
+    img: "/manutencao-bg.avif",
+    className: "md:col-span-2 lg:col-span-2",
+  },
+  {
+    id: 5,
+    title: "Desenvolvimento de sites e landing pages",
+    description:
+      "Sites institucionais e landing pages de alta conversão, com design moderno, performance e SEO.",
+    icon: "code",
+    img: "/b1.webp",
+    className: "md:col-span-2 lg:col-span-2 lg:row-span-2",
+  },
+  {
+    id: 6,
+    title: "Wi-Fi para eventos",
+    description:
+      "Conectividade temporária de alta capacidade para eventos de qualquer porte.",
+    icon: "broadcast",
+    className: "lg:col-span-1",
+  },
+  {
+    id: 7,
+    title: "Consultoria de TI personalizada",
+    description:
+      "Diagnóstico e planejamento estratégico de tecnologia alinhados ao momento do seu negócio.",
+    icon: "consulting",
+    className: "lg:col-span-1",
+  },
+  {
+    id: 8,
+    title: "Venda de equipamentos de informática",
+    description:
+      "Fornecimento de computadores, servidores e ativos de rede com configuração, entrega e garantia.",
+    icon: "laptop",
+    className: "md:col-span-2 lg:col-span-2",
+  },
+];
+
+export const projects: {
+  id: number;
+  title: string;
+  des: string;
+  img: string;
+  /** Exibe a imagem como logo centralizada em vez de capa */
+  isLogo?: boolean;
+  iconLists: string[];
+  /** Sem link = card sem botão "Ver projeto" */
+  link?: string;
+}[] = [
+  {
+    id: 1,
     title: "Página de Links - Cintia Resende",
     des: "Página de Links feita para designer de sobrancelha Cintia Resende",
     img: "/P2.webp",
@@ -98,53 +112,34 @@ export const projects = [
     link: "https://cintia-resende-links.vercel.app/",
   },
   {
-    id: 3,
-    title: "Em breve",
-    des: "Trabalho realizado para tal empresa com tal intuito",
-    img: "/em-breve.avif",
-    iconLists: ["/re.svg", "/tail.svg", "photoshop.svg"],
-    link: "Em desenvolvimento",
-  },
-  {
-    id: 4,
-    title: "Em breve",
-    des: "Trabalho realizado para tal empresa com tal intuito",
-    img: "/em-breve.avif",
-    iconLists: ["/re.svg", "/tail.svg", "photoshop.svg"],
-    link: "Em desenvolvimento",
+    id: 2,
+    title: "PEVT - Pesca Esportiva Velho da Taipa",
+    des: "Reestruturação de rede e implementação de novos pontos de Wi-Fi na propriedade.",
+    img: "/pevt-logo.png",
+    isLogo: true,
+    iconLists: [],
   },
 ];
 
-export const testimonials = [
+export const testimonials: {
+  quote: string;
+  name: string;
+  title: string;
+  /** Logo da empresa do cliente; sem logo, exibe avatar com a inicial */
+  logo?: string;
+}[] = [
   {
     quote:
-      "Recentemente, tive o prazer de trabalhar com a equipe da TriUnity e não poderia estar mais satisfeito com os resultados. A competência técnica e o profissionalismo demonstrados durante todo o projeto foram excepcionais.",
-    name: "Leonardo Alves",
-    title: "Motorista na empresa UAI Viagens",
+      "A TriUnity criou minha página de links do jeito que eu imaginava: bonita, rápida e com a minha cara. Minhas clientes agora encontram tudo em um só lugar — agendamento, redes sociais e localização. O atendimento foi atencioso do início ao fim e o resultado elevou a presença digital do meu negócio. Recomendo de olhos fechados!",
+    name: "Cintia Resende",
+    title: "Empreendedora no ramo de estética feminina",
   },
   {
     quote:
-      "Recentemente, tive o prazer de trabalhar com a equipe da TriUnity e não poderia estar mais satisfeito com os resultados. A competência técnica e o profissionalismo demonstrados durante todo o projeto foram excepcionais.",
-    name: "Cinthia Resende",
-    title: "CEO da empresa Cinthia Resende Design de Sobrancelha",
-  },
-  {
-    quote:
-      "Recentemente, tive o prazer de trabalhar com a equipe da TriUnity e não poderia estar mais satisfeito com os resultados. A competência técnica e o profissionalismo demonstrados durante todo o projeto foram excepcionais.",
-    name: "Vitor Batista",
-    title: "Aux. Administrativo da empresa TriUnity",
-  },
-  {
-    quote:
-      "Recentemente, tive o prazer de trabalhar com a equipe da TriUnity e não poderia estar mais satisfeito com os resultados. A competência técnica e o profissionalismo demonstrados durante todo o projeto foram excepcionais.",
-    name: "Thiago Henrique",
-    title: "Socio da Empresa TriUnity",
-  },
-  {
-    quote:
-      "Recentemente, tive o prazer de trabalhar com a equipe da TriUnity e não poderia estar mais satisfeito com os resultados. A competência técnica e o profissionalismo demonstrados durante todo o projeto foram excepcionais.",
-    name: "Aparecida Marques",
-    title: "CEO da empresa Cida Lanches",
+      "Nossa rede já não dava conta da demanda e o sinal falhava em vários pontos da propriedade. A equipe da TriUnity reestruturou toda a infraestrutura e implementou novos pontos de Wi-Fi, com um planejamento muito bem executado. Hoje temos cobertura estável em todas as áreas e nossos visitantes sentem a diferença. Só tenho a agradecer pelo profissionalismo e pela agilidade do time!",
+    name: "Walter Oliveira",
+    title: "Pesca Esportiva Velho da Taipa - PEVT",
+    logo: "/pevt-logo.png",
   },
 ];
 

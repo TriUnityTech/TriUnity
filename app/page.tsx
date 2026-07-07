@@ -3,7 +3,8 @@
 import { navItems } from "@/data";
 
 import Hero from "@/components/Hero";
-import Grid from "@/components/Grid";
+import Manifesto from "@/components/Manifesto";
+import Services from "@/components/Services";
 import Footer from "@/components/Footer";
 import Clients from "@/components/Clients";
 import Approach from "@/components/Approach";
@@ -17,7 +18,8 @@ const Home = () => {
       <div className="max-w-7xl w-full h-full ">
         <FloatingNav navItems={navItems} />
         <Hero />
-        <Grid />
+        <Manifesto />
+        <Services />
         <RecentProjects />
         <Clients />
         <Experience />

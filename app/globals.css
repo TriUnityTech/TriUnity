@@ -68,7 +68,7 @@
 
 @layer base {
   * {
-    @apply border-border !scroll-smooth;
+    @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
@@ -81,5 +81,40 @@
 @layer utilities {
   .heading {
     @apply font-bold text-4xl md:text-5xl text-center;
+  }
+
+  /* Containers animados por GSAP: promove para camada própria do compositor */
+  .gpu {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+  }
+}
+
+/* Fallback nativo caso o Lenis não inicialize (sem JS) */
+html:not(.lenis) {
+  scroll-behavior: smooth;
+}
+
+/* CSS recomendado pelo Lenis: evita dupla suavização em âncoras */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
   }
 }

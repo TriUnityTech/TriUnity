@@ -14,6 +14,7 @@ export const InfiniteMovingCards = ({
     quote: string;
     name: string;
     title: string;
+    logo?: string;
   }[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
@@ -114,9 +115,25 @@ export const InfiniteMovingCards = ({
                 {item.quote}
               </span>
               <div className="relative z-20 mt-6 flex flex-row items-center">
-                {/* add this div for the profile img */}
+                {/* logo da empresa do cliente; sem logo, avatar com a inicial
+                    (sem fotos de rosto — não há autorização de uso de imagem) */}
                 <div className="me-3">
-                  <img src="/profile.svg" alt="profile" />
+                  {item.logo ? (
+                    <img
+                      src={item.logo}
+                      alt={`Logo - ${item.title}`}
+                      width={48}
+                      height={48}
+                      className="w-12 h-12 rounded-full object-cover border border-white/10 bg-white/5"
+                    />
+                  ) : (
+                    <span
+                      aria-hidden="true"
+                      className="w-12 h-12 rounded-full border border-purple/40 bg-purple/10 text-purple font-bold text-lg flex items-center justify-center"
+                    >
+                      {item.name.charAt(0)}
+                    </span>
+                  )}
                 </div>
                 <span className="flex flex-col gap-1">
                   {/* change text color, font-normal to font-bold, text-xl */}
