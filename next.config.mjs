@@ -1,6 +1,16 @@
 import {withSentryConfig} from '@sentry/nextjs';
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  async redirects() {
+    return [
+      {
+        source: '/inicio',
+        destination: '/',
+        permanent: true,
+      },
+    ];
+  },
+};
 
 export default withSentryConfig(nextConfig, {
 // For all available options, see:
