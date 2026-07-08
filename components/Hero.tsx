@@ -24,10 +24,11 @@ const Hero = () => {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
-      // Desktop: cena pinada com zoom-through — a tela trava e o conteúdo
-      // cresce em direção à câmera até "atravessar", revelando a próxima seção
+      // Cena pinada com zoom-through — a tela trava e o conteúdo cresce em
+      // direção à câmera até "atravessar", revelando a próxima seção.
+      // Roda em todas as larguras: mesma experiência no desktop e no mobile.
       mm.add(
-        "(prefers-reduced-motion: no-preference) and (min-width: 1024px)",
+        "(prefers-reduced-motion: no-preference)",
         () => {
           const tl = gsap.timeline({
             scrollTrigger: {
@@ -50,25 +51,6 @@ const Hero = () => {
           if (cueRef.current) {
             tl.to(cueRef.current, { autoAlpha: 0, duration: 0.15 }, 0);
           }
-        }
-      );
-
-      // Mobile: "afundar" leve, sem pin
-      mm.add(
-        "(prefers-reduced-motion: no-preference) and (max-width: 1023px)",
-        () => {
-          gsap.to(content, {
-            opacity: 0.25,
-            scale: 0.94,
-            force3D: true,
-            ease: "none",
-            scrollTrigger: {
-              trigger: header,
-              start: "center center",
-              end: "bottom 25%",
-              scrub: 0.6,
-            },
-          });
         }
       );
     }, header);

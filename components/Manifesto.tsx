@@ -34,9 +34,8 @@ const Manifesto = () => {
             "(prefers-reduced-motion: no-preference) and (max-width: 1023px)",
         },
         (context) => {
-          const { reduced, desktop } = context.conditions as {
+          const { reduced } = context.conditions as {
             reduced: boolean;
-            desktop: boolean;
           };
 
           if (reduced) {
@@ -48,21 +47,15 @@ const Manifesto = () => {
             opacity: 1,
             stagger: 0.08,
             ease: "none",
-            scrollTrigger: desktop
-              ? {
-                  trigger: section,
-                  start: "top top",
-                  end: "+=130%",
-                  pin: true,
-                  scrub: 0.5,
-                  anticipatePin: 1,
-                }
-              : {
-                  trigger: section,
-                  start: "top 75%",
-                  end: "bottom 65%",
-                  scrub: 0.5,
-                },
+            // Cena pinada em todas as larguras (mesma do desktop no mobile)
+            scrollTrigger: {
+              trigger: section,
+              start: "top top",
+              end: "+=130%",
+              pin: true,
+              scrub: 0.5,
+              anticipatePin: 1,
+            },
           });
         }
       );

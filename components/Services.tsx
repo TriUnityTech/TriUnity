@@ -90,9 +90,8 @@ const Services = () => {
             "(prefers-reduced-motion: no-preference) and (max-width: 1023px)",
         },
         (context) => {
-          const { reduced, desktop } = context.conditions as {
+          const { reduced } = context.conditions as {
             reduced: boolean;
-            desktop: boolean;
           };
 
           if (reduced) {
@@ -104,10 +103,11 @@ const Services = () => {
             return;
           }
 
-          if (desktop) {
+          {
             // Montagem por card: cada peça chega de uma direção e se encaixa
             // conforme entra na tela. Sem pin — o conteúdo nunca fica refém
             // de uma cena para se tornar visível.
+            // Roda em todas as larguras (mesma experiência no mobile).
             cards.forEach((card, i) => {
               const dir = i % 2 === 0 ? -1 : 1;
               gsap.from(card, {
@@ -145,20 +145,6 @@ const Services = () => {
                   }
                 );
               }
-            });
-          } else {
-            gsap.from(cards, {
-              autoAlpha: 0,
-              y: 40,
-              force3D: true,
-              duration: 0.8,
-              ease: "power3.out",
-              stagger: 0.08,
-              scrollTrigger: {
-                trigger: el,
-                start: "top 85%",
-                toggleActions: "play none none reverse",
-              },
             });
           }
         }

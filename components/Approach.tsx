@@ -43,11 +43,12 @@ const Approach: React.FC = () => {
       );
       if (!cards.length) return;
 
-      // Desktop: deck de cards — a seção trava e cada card "descola" do topo
-      // da pilha revelando o próximo, no ritmo do scroll. Estilo aplicado via
-      // gsap.set para o layout em grid continuar valendo sem JS/reduced-motion.
+      // Deck de cards — a seção trava e cada card "descola" do topo da pilha
+      // revelando o próximo, no ritmo do scroll. Estilo aplicado via gsap.set
+      // para o layout em grid continuar valendo sem JS/reduced-motion.
+      // Roda em todas as larguras: mesma experiência no desktop e no mobile.
       mm.add(
-        "(prefers-reduced-motion: no-preference) and (min-width: 1024px)",
+        "(prefers-reduced-motion: no-preference)",
         () => {
           gsap.set(stage, {
             display: "block",
@@ -115,30 +116,18 @@ const Approach: React.FC = () => {
         }
       );
 
-      // Mobile / reduced-motion: grid normal com entrada simples
-      mm.add(
-        {
-          mobile:
-            "(prefers-reduced-motion: no-preference) and (max-width: 1023px)",
-          reduced: "(prefers-reduced-motion: reduce)",
-        },
-        (context) => {
-          const { reduced } = context.conditions as { reduced: boolean };
-
-          gsap.from(cards, {
-            autoAlpha: 0,
-            ...(reduced ? {} : { y: 40 }),
-            duration: reduced ? 0.4 : 0.8,
-            ease: "power3.out",
-            stagger: reduced ? 0 : 0.1,
-            scrollTrigger: {
-              trigger: stage,
-              start: "top 85%",
-              toggleActions: "play none none reverse",
-            },
-          });
-        }
-      );
+      // Reduced-motion: grid normal com fade simples, sem movimento
+      mm.add("(prefers-reduced-motion: reduce)", () => {
+        gsap.from(cards, {
+          autoAlpha: 0,
+          duration: 0.4,
+          scrollTrigger: {
+            trigger: stage,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        });
+      });
     }, section);
 
     return () => ctx.revert();

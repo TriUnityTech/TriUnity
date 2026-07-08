@@ -24,7 +24,7 @@ const Projects = () => {
       // Todo o estilo da variante é aplicado via gsap.set para que, sem JS ou
       // com prefers-reduced-motion, o layout continue no fluxo normal.
       mm.add(
-        "(prefers-reduced-motion: no-preference) and (min-width: 1024px)",
+        "(prefers-reduced-motion: no-preference)",
         () => {
           gsap.set(viewport, {
             height: "100vh",
@@ -83,31 +83,20 @@ const Projects = () => {
         }
       );
 
-      // Mobile / reduced-motion: entrada simples em pilha
-      mm.add(
-        {
-          mobile:
-            "(prefers-reduced-motion: no-preference) and (max-width: 1023px)",
-          reduced: "(prefers-reduced-motion: reduce)",
-        },
-        (context) => {
-          const { reduced } = context.conditions as { reduced: boolean };
-          const cards = track.querySelectorAll("[data-project-card]");
+      // Reduced-motion: entrada simples em pilha, sem movimento
+      mm.add("(prefers-reduced-motion: reduce)", () => {
+        const cards = track.querySelectorAll("[data-project-card]");
 
-          gsap.from(cards, {
-            autoAlpha: 0,
-            ...(reduced ? {} : { y: 48 }),
-            duration: reduced ? 0.4 : 0.9,
-            ease: "power3.out",
-            stagger: reduced ? 0 : 0.12,
-            scrollTrigger: {
-              trigger: track,
-              start: "top 85%",
-              toggleActions: "play none none reverse",
-            },
-          });
-        }
-      );
+        gsap.from(cards, {
+          autoAlpha: 0,
+          duration: 0.4,
+          scrollTrigger: {
+            trigger: track,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        });
+      });
     }, viewport);
 
     return () => ctx.revert();

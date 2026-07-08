@@ -44,6 +44,10 @@ export const SmoothScroll = ({ children }: { children: ReactNode }) => {
         lerp: 0.05,
         duration: 1.2,
         smoothWheel: true,
+        // Sem isto, no touch o Lenis não emite scroll → ScrollTrigger nunca
+        // atualiza e as animações de reveal ficam congeladas no mobile.
+        syncTouch: true,
+        touchMultiplier: 1.5,
       }}
     >
       <LenisGsapBridge />
