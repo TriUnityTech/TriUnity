@@ -15,6 +15,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://triunitytech.com.br"),
   title: "TriUnity | Tecnologia de ponta para o seu negócio",
   description:
     "Infraestrutura de TI, redes Wi-Fi empresariais e para eventos, cabeamento estruturado, suporte on/offsourcing, consultoria personalizada, BI e venda de equipamentos de informática.",
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     title: "TriUnity | Tecnologia de ponta para o seu negócio",
     description:
       "Infraestrutura de TI, redes corporativas, suporte on/offsourcing, consultoria personalizada, BI e venda de equipamentos.",
-    url: "https://triunity.com.br",
+    url: "https://triunitytech.com.br",
     siteName: "TriUnity",
     images: [
       {
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
     images: ["/logo.png"],
   },
   alternates: {
-    canonical: "https://triunity.com.br",
+    canonical: "https://triunitytech.com.br",
   },
 };
 
