@@ -104,6 +104,14 @@ export const projects: {
   link?: string;
 }[] = [
   {
+    id: 3,
+    title: "Autos 037 - Loja de seminovos",
+    des: "Site cinematográfico com estoque, 360° dos carros, detalhe por detalhe, ficha técnica e WhatsApp com a mensagem de cada carro.",
+    img: "/autos037.webp",
+    iconLists: ["/gsap.svg"],
+    link: "https://www.autos037.com.br/",
+  },
+  {
     id: 1,
     title: "Página de Links - Cintia Resende",
     des: "Página de Links feita para designer de sobrancelha Cintia Resende",
