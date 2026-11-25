@@ -1,5 +1,5 @@
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import { socialMedia } from "@/data";
+import { socialMedia, CHECKUP_LINK } from "@/data";
 import MagicButton from "./MagicButton";
 import { ScrollReveal } from "./ui/ScrollReveal";
 import { WordReveal } from "./ui/WordReveal";
@@ -32,19 +32,19 @@ const Footer = () => {
           as="h1"
           className="heading lg:max-w-[45vw]"
           segments={[
-            { text: "Pronto para ", className: "text-purple" },
-            { text: "elevar o nível tecnológico do seu negócio?" },
+            { text: "Comece pelo ", className: "text-purple" },
+            { text: "checkup gratuito." },
           ]}
         />
         <ScrollReveal y={40} className="flex flex-col items-center">
           <p className="text-white-200 md:mt-10 my-5 text-center">
-            Envie uma mensagem para nós e compartilhe suas necessidades. Iremos
-            transformar suas ideias em realidade, dentro do seu orçamento.
+            Em uma hora a gente olha rede, backup e computadores e te entrega um
+            relatório com o que precisa de atenção. Sem compromisso.
           </p>
           <Magnetic>
-            <a href="https://wa.me/5537999754109">
+            <a href={CHECKUP_LINK} target="_blank" rel="noopener noreferrer">
               <MagicButton
-                title="Fale conosco"
+                title="Agendar pelo WhatsApp"
                 icon={<WhatsAppIcon />}
                 position="right"
               />
@@ -54,7 +54,7 @@ const Footer = () => {
       </div>
       <div className="flex mt-16 md:flex-row flex-col justify-between items-center">
         <p className="md:text-base pb-8 md:pb-0 text-sm md:font-normal font-light">
-          Copyright © 2024 TriUnity
+          © 2026 TriUnity Tech · Pitangui-MG
         </p>
 
         <div className="flex items-center md:gap-3 gap-6">

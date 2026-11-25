@@ -17,9 +17,9 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://triunitytech.com.br"),
-  title: "TriUnity | Tecnologia de ponta para o seu negócio",
+  title: "TriUnity | Suporte de TI em Pitangui e região",
   description:
-    "Infraestrutura de TI, redes Wi-Fi empresariais e para eventos, cabeamento estruturado, suporte on/offsourcing, consultoria personalizada, BI e venda de equipamentos de informática.",
+    "Infraestrutura de TI, redes Wi-Fi empresariais e para eventos, cabeamento estruturado, suporte on/offsourcing, consultoria personalizada e venda de equipamentos de informática.",
   keywords: [
     "Infraestrutura de TI",
     "Redes Wi-Fi empresarial",
@@ -28,14 +28,13 @@ export const metadata: Metadata = {
     "Suporte de TI",
     "Outsourcing de TI",
     "Consultoria de TI",
-    "BI e KPI",
     "Venda de equipamentos de informática",
     "TriUnity",
   ],
   openGraph: {
     title: "TriUnity | Tecnologia de ponta para o seu negócio",
     description:
-      "Infraestrutura de TI, redes corporativas, suporte on/offsourcing, consultoria personalizada, BI e venda de equipamentos.",
+      "Infraestrutura de TI, redes corporativas, suporte on/offsourcing, consultoria personalizada e venda de equipamentos.",
     url: "https://triunitytech.com.br",
     siteName: "TriUnity",
     images: [
@@ -67,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="pt-BR" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.png" type="image/png" sizes="96x96" />
       </head>
