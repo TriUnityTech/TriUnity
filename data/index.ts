@@ -1,4 +1,10 @@
+export const WHATSAPP = "5537999754109";
+export const CHECKUP_LINK = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
+  "Olá! Quero agendar o checkup gratuito de TI."
+)}`;
+
 export const navItems = [
+  { name: "Checkup grátis", link: "#checkup" },
   { name: "Serviços", link: "#about" },
   { name: "Projetos", link: "#projects" },
   { name: "Feedbacks", link: "#testimonials" },
@@ -27,7 +33,7 @@ export const services: {
     id: 1,
     title: "Infraestrutura",
     description:
-      "Projetamos, implantamos e gerenciamos toda a base tecnológica da sua empresa: servidores, storage, virtualização e ambientes híbridos.",
+      "Cuidamos dos computadores, do servidor e do sistema da sua empresa para que nada pare no meio do expediente.",
     icon: "server",
     img: "/infra-bg.avif",
     className: "md:col-span-2 lg:col-span-2 lg:row-span-2",
@@ -36,7 +42,7 @@ export const services: {
     id: 2,
     title: "Redes Wi-Fi empresarial",
     description:
-      "Cobertura corporativa de alta densidade, com segurança, gestão centralizada e desempenho estável.",
+      "Wi-Fi que pega em todo canto, com rede separada para clientes e pacientes.",
     icon: "wifi",
     className: "lg:col-span-1",
   },
@@ -44,15 +50,15 @@ export const services: {
     id: 3,
     title: "Redes físicas estruturadas",
     description:
-      "Cabeamento estruturado com certificação, organização de racks e documentação completa.",
+      "Cabos organizados e testados: fim da internet lenta por mau contato.",
     icon: "network",
     className: "lg:col-span-1",
   },
   {
     id: 4,
-    title: "Suporte On e Offsourcing",
+    title: "Suporte mensal de TI",
     description:
-      "Equipe técnica dedicada, presencial ou remota, com atendimento contínuo e SLAs sob medida.",
+      "Plano mensal com suporte remoto no mesmo dia, visita presencial e backup automático.",
     icon: "headset",
     img: "/manutencao-bg.avif",
     className: "md:col-span-2 lg:col-span-2",
@@ -70,15 +76,15 @@ export const services: {
     id: 6,
     title: "Wi-Fi para eventos",
     description:
-      "Conectividade temporária de alta capacidade para eventos de qualquer porte.",
+      "Internet estável para festas, feiras e eventos de qualquer tamanho.",
     icon: "broadcast",
     className: "lg:col-span-1",
   },
   {
     id: 7,
-    title: "Consultoria de TI personalizada",
+    title: "Consultoria de TI",
     description:
-      "Diagnóstico e planejamento estratégico de tecnologia alinhados ao momento do seu negócio.",
+      "A gente avalia sua estrutura e diz o que vale a pena melhorar, sem empurrar o que você não precisa.",
     icon: "consulting",
     className: "lg:col-span-1",
   },
@@ -86,7 +92,7 @@ export const services: {
     id: 8,
     title: "Venda de equipamentos de informática",
     description:
-      "Fornecimento de computadores, servidores e ativos de rede com configuração, entrega e garantia.",
+      "Computadores e equipamentos de rede entregues já configurados e com garantia.",
     icon: "laptop",
     className: "md:col-span-2 lg:col-span-2",
   },

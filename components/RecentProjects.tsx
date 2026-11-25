@@ -19,36 +19,10 @@ const Projects = () => {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
-      // Desktop: galeria horizontal dirigida pelo scroll vertical — a seção
-      // trava na tela e os projetos deslizam lateralmente (assinatura Apple).
-      // Todo o estilo da variante é aplicado via gsap.set para que, sem JS ou
-      // com prefers-reduced-motion, o layout continue no fluxo normal.
+      // Entrada simples dos cards, sem travar a rolagem
       mm.add(
         "(prefers-reduced-motion: no-preference)",
         () => {
-          gsap.set(viewport, {
-            height: "100vh",
-            display: "flex",
-            alignItems: "center",
-            overflow: "hidden",
-          });
-          gsap.set(track, {
-            flexWrap: "nowrap",
-            width: "max-content",
-            justifyContent: "flex-start",
-            margin: 0,
-            paddingLeft: "6vw",
-            paddingRight: "14vw",
-          });
-
-          const distance = () =>
-            Math.max(0, track.scrollWidth - viewport.clientWidth);
-
-          // Poucos projetos: se não há percurso horizontal, dispensa a
-          // galeria pinada e usa a entrada simples
-          if (distance() < 80) {
-            gsap.set(viewport, { clearProps: "all" });
-            gsap.set(track, { clearProps: "all" });
             gsap.from(track.querySelectorAll("[data-project-card]"), {
               autoAlpha: 0,
               y: 64,
@@ -63,23 +37,6 @@ const Projects = () => {
                 toggleActions: "play none none reverse",
               },
             });
-            return;
-          }
-
-          gsap.to(track, {
-            x: () => -distance(),
-            ease: "none",
-            force3D: true,
-            scrollTrigger: {
-              trigger: viewport,
-              start: "top top",
-              end: () => "+=" + (distance() + viewport.clientWidth * 0.35),
-              pin: true,
-              scrub: 0.8,
-              anticipatePin: 1,
-              invalidateOnRefresh: true,
-            },
-          });
         }
       );
 

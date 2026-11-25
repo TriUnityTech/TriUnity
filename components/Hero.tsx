@@ -1,68 +1,21 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
-import { FaLocationArrow, FaChevronDown } from "react-icons/fa6";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { useLenis } from "@studio-freight/react-lenis";
 
 import MagicButton from "./MagicButton";
 import { Magnetic } from "./ui/Magnetic";
 import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
-import { gsap } from "@/lib/gsap";
+import { CHECKUP_LINK } from "@/data";
 
 const Hero = () => {
-  const headerRef = useRef<HTMLElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const cueRef = useRef<HTMLDivElement>(null);
   const lenis = useLenis();
-
-  useLayoutEffect(() => {
-    const header = headerRef.current;
-    const content = contentRef.current;
-    if (!header || !content) return;
-
-    const ctx = gsap.context(() => {
-      const mm = gsap.matchMedia();
-
-      // Cena pinada com zoom-through — a tela trava e o conteúdo cresce em
-      // direção à câmera até "atravessar", revelando a próxima seção.
-      // Roda em todas as larguras: mesma experiência no desktop e no mobile.
-      mm.add(
-        "(prefers-reduced-motion: no-preference)",
-        () => {
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: header,
-              start: "top top",
-              end: "+=120%",
-              pin: true,
-              scrub: 0.8,
-              anticipatePin: 1,
-            },
-          });
-
-          tl.to(
-            content,
-            { scale: 1.5, yPercent: -6, force3D: true, duration: 1, ease: "power1.in" },
-            0
-          ).to(content, { autoAlpha: 0, duration: 0.45, ease: "none" }, 0.55);
-
-          // A dica de scroll some assim que a rolagem começa
-          if (cueRef.current) {
-            tl.to(cueRef.current, { autoAlpha: 0, duration: 0.15 }, 0);
-          }
-        }
-      );
-    }, header);
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <header
-      className="relative pb-32 pt-40 lg:pb-0 lg:pt-0 lg:min-h-screen lg:flex lg:flex-col lg:justify-center"
+      className="relative pb-20 pt-36 lg:min-h-[90vh] lg:flex lg:flex-col lg:justify-center"
       aria-label="Introdução"
-      ref={headerRef}
     >
       <div>
         <Spotlight
@@ -89,7 +42,6 @@ const Hero = () => {
 
       <div className="flex justify-center relative my-10 z-10">
         <div
-          ref={contentRef}
           className="max-w-[89vw] md:max-w-2xl lg:max-w-[70vw] flex flex-col items-center justify-center gpu"
         >
           <img
@@ -100,21 +52,35 @@ const Hero = () => {
             className="w-60 sm:w-72 h-auto mb-8 opacity-90 transition-opacity duration-500 hover:opacity-100"
           />
 
-          <h1 className="sr-only">TriUnity - Tecnologia de ponta para o seu negócio</h1>
+          <h1 className="sr-only">TriUnity - TI para clínicas e empresas de Pitangui e região</h1>
 
           <TextGenerateEffect
-            words="Desenvolvemos Tecnologia de ponta para o seu negócio!"
+            words="TI para clínicas e empresas de Pitangui e região"
             className="text-center text-[40px] md:text-5xl lg:text-6xl tracking-tight font-medium"
           />
 
           <p className="text-center tracking-tight mb-8 text-zinc-400 text-sm md:text-lg lg:text-xl max-w-xl mt-4">
-            Transforme ideias em soluções práticas e inovadoras.
+            Sistema lento? Internet caindo? Backup que ninguém testou? A gente resolve — atendimento local, no mesmo dia.
           </p>
 
-          <Magnetic>
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <Magnetic>
+              <a
+                href={CHECKUP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Agendar checkup gratuito pelo WhatsApp"
+              >
+                <MagicButton
+                  title="Agende seu checkup gratuito"
+                  icon={<WhatsAppIcon />}
+                  position="right"
+                />
+              </a>
+            </Magnetic>
             <a
               href="#about"
-              aria-label="Ver Nossos Serviços"
+              className="text-zinc-400 hover:text-white text-sm underline-offset-4 hover:underline"
               onClick={(e) => {
                 if (lenis) {
                   e.preventDefault();
@@ -122,25 +88,12 @@ const Hero = () => {
                 }
               }}
             >
-              <MagicButton
-                title="Nossos serviços"
-                icon={<FaLocationArrow />}
-                position="right"
-              />
+              Ver serviços
             </a>
-          </Magnetic>
+          </div>
         </div>
       </div>
 
-      {/* Dica de scroll: some assim que a rolagem começa */}
-      <div
-        ref={cueRef}
-        aria-hidden="true"
-        className="hidden lg:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-zinc-500"
-      >
-        <span className="text-xs tracking-widest uppercase">Role</span>
-        <FaChevronDown className="animate-bounce w-4 h-4" />
-      </div>
     </header>
   );
 };
